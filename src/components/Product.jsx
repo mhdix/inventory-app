@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 
-const Product = ({ categories }) => {
+const Product = ({ categories, products, setProducts }) => {
   const [isShow, setIsShow] = useState(false);
   const [productsFormData, setProductsFormData] = useState({
     title: "",
     quantity: 0,
     categoryId: "",
   });
-  const [products, setProducts] = useState([]);
 
   const changeHandler = (e) => {
     console.log(e.target.value);
@@ -21,7 +20,7 @@ const Product = ({ categories }) => {
       ...products,
       {
         ...productsFormData,
-        createAt: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
         id: new Date().getTime(),
       },
     ]);
@@ -93,14 +92,14 @@ const Product = ({ categories }) => {
           </form>
         </div>
       </div>
-      {!isShow && (
+      {/* {!isShow && ( */}
         <button
           onClick={() => setIsShow((prevState) => !prevState)}
           className="text-slate-600 text-lg mb-4 font-medium"
         >
           {!isShow ? "⬇️ add new product ?" : "⬆️ hidden add product ?"}
         </button>
-      )}
+      {/* )}   */}
     </div>
   );
 };
