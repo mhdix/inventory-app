@@ -2,7 +2,31 @@ import React, { useState } from "react";
 
 const Product = ({ categories }) => {
   const [isShow, setIsShow] = useState(false);
+  const [productsFormData, setProductsFormData] = useState({
+    title: "",
+    quantity: 0,
+    categoryId: "",
+  });
+  const [products, setProducts] = useState([]);
 
+  const changeHandler = (e) => {
+    console.log(e.target.value);
+    const { name, value } = e.target;
+    setProductsFormData({ ...productsFormData, [name]: value });
+  };
+
+  const addNewProduct = (e) => {
+    e.preventDefault();
+    setProducts([
+      ...products,
+      {
+        ...productsFormData,
+        createAt: new Date().toISOString(),
+        id: new Date().getTime(),
+      },
+    ]);
+    setProductsFormData({ title: "", quantity: "", categoryId: "" });
+  };
   return (
     <div>
       <div className={`mb-6 ${!isShow && "hidden"}`}>
@@ -16,7 +40,9 @@ const Product = ({ categories }) => {
               <input
                 type="text"
                 name="title"
-                className="bg-transparent border border-slate-500 rounded-xl w-3/6"
+                className="bg-transparent border text-slate-300 border-slate-500 rounded-xl w-3/6"
+                value={productsFormData.title}
+                onChange={(e) => changeHandler(e)}
               />
             </span>
             <span className="flex flex-col gap-2">
@@ -24,9 +50,11 @@ const Product = ({ categories }) => {
                 quantity
               </label>
               <input
-                type="text"
-                name="title"
-                className="bg-transparent border border-slate-500 rounded-xl w-3/6"
+                type="number"
+                name="quantity"
+                className="bg-transparent border text-slate-300 border-slate-500 rounded-xl w-3/6"
+                value={productsFormData.quantity}
+                onChange={(e) => changeHandler(e)}
               />
             </span>
 
@@ -35,34 +63,31 @@ const Product = ({ categories }) => {
                 category
               </label>
               <select
-                name=""
-                id=""
+                value={productsFormData.categoryId}
+                onChange={(e) => changeHandler(e)}
+                name="categoryId"
                 className="bg-transparent border text-slate-300 border-slate-500 rounded-xl"
               >
-                <option
-                  disabled
-                  selected
-                  className="bg-slate-500 text-slate-300"
-                >
+                <option value="" className="bg-slate-500 text-slate-300">
                   select a category
                 </option>
                 {categories.map((category) => (
                   <option
                     key={category.id}
                     className="bg-slate-500 text-slate-300"
-                    value={category.title}
+                    value={category.id}
                   >
-                    {category.title}
+                    {category.title} - {category.id}
                   </option>
                 ))}
               </select>
             </span>
             <span className="flex w-full gap-4">
-              <button className="border text-slate-200 border-slate-200 p-2 rounded-xl w-1/2">
-                Cancle
-              </button>
-              <button className="border text-white bg-slate-500 border-slate-500 p-2 rounded-xl w-1/2">
-                Add Category
+              <button
+                onClick={addNewProduct}
+                className="border text-white bg-slate-500 border-slate-500 p-2 rounded-xl w-full"
+              >
+                Add New Product
               </button>
             </span>
           </form>

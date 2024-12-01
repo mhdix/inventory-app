@@ -36,7 +36,7 @@ const Category = ({ setCategories }) => {
               <input
                 type="text"
                 name="title"
-                className="bg-transparent border border-slate-500 rounded-xl w-3/6"
+                className="bg-transparent border text-slate-300 border-slate-500 rounded-xl w-3/6"
                 value={categoryFormData.title}
                 onChange={changeHandler}
               />
@@ -49,7 +49,7 @@ const Category = ({ setCategories }) => {
                 name="desc"
                 id=""
                 rows="5"
-                className="bg-transparent border border-slate-500 rounded-xl"
+                className="bg-transparent border text-slate-300 border-slate-500 rounded-xl"
                 value={categoryFormData.desc}
                 onChange={changeHandler}
               ></textarea>
