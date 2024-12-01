@@ -26,8 +26,11 @@ const Category = ({ setCategories }) => {
   return (
     <section>
       <div className={`mb-6 ${!isShow && "hidden"}`} id="category-wrapper">
+        <h2 className="text-slate-200 font-bold uppercase mt-0 m-4 text-lg">
+          Add New Category
+        </h2>
+
         <div className="bg-slate-700 rounded-xl p-5 px-8">
-          <h1 className="text-slate-200 font-bold">Add New Category</h1>
           <form action="" className="flex flex-col gap-6">
             <span className="flex flex-col gap-2">
               <label htmlFor="" className="text-slate-400">
@@ -80,7 +83,11 @@ const Category = ({ setCategories }) => {
           className="text-slate-600 text-lg mb-4 font-medium"
           onClick={() => setIsShow((prevState) => !prevState)}
         >
-          {!isShow ? "⬇️ add new category ?" : "⬆️ hidden add category ?"}
+          {!isShow ? (
+            <p className="uppercase font-bold text-lg mx-4">add new category ?</p>
+          ) : (
+            <p className="uppercase font-bold text-lg">hidden add category ?</p>
+          )}
         </button>
       )}
     </section>

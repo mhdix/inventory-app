@@ -29,8 +29,9 @@ const Product = ({ categories, products, setProducts }) => {
   return (
     <div>
       <div className={`mb-6 ${!isShow && "hidden"}`}>
+        <h2 className="text-slate-200 font-bold uppercase m-4">Add New product</h2>
+
         <div className="bg-slate-700 rounded-xl p-5 px-8">
-          <h1 className="text-slate-200 font-bold">Add New product</h1>
           <form action="" className="flex flex-col gap-6">
             <span className="flex flex-col gap-2">
               <label htmlFor="" className="text-slate-400">
@@ -93,12 +94,12 @@ const Product = ({ categories, products, setProducts }) => {
         </div>
       </div>
       {/* {!isShow && ( */}
-        <button
-          onClick={() => setIsShow((prevState) => !prevState)}
-          className="text-slate-600 text-lg mb-4 font-medium"
-        >
-          {!isShow ? "⬇️ add new product ?" : "⬆️ hidden add product ?"}
-        </button>
+      <button
+        onClick={() => setIsShow((prevState) => !prevState)}
+        className="text-slate-600 text-lg mb-4 font-medium"
+      >
+        {!isShow ? "⬇️ add new product ?" : "⬆️ hidden add product ?"}
+      </button>
       {/* )}   */}
     </div>
   );

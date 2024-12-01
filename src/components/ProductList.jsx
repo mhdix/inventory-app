@@ -25,7 +25,7 @@ const ProductList = ({ products, categories, setProducts }) => {
               </div>
               <div className="text-sm col-span-7 text-slate-300 flex items-center gap-4 justify-end">
                 <p className="border border-slate-500 rounded-full px-4 py-1 bg-slate-700">
-                  {product.categories && findCategory(product.categoryId)}
+                  {findCategory(product.categoryId)}
                 </p>
                 <p className="border rounded-full w-7 h-7 flex justify-center items-center overflow-hidden">
                   {product.quantity}

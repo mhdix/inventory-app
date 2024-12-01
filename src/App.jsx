@@ -3,6 +3,7 @@ import Category from "./components/Category";
 import Navbar from "./components/Navbar";
 import Product from "./components/Product";
 import ProductList from "./components/ProductList";
+import Filter from "./components/Filter";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         </div>
         <div className="container max-w-screen-sm mx-auto p-4">
           <Product categories={categories} products={products} setProducts={setProducts}/>
+          <Filter />
           <ProductList products={products} categories={categories} setProducts={setProducts}/>
         </div>
       </div>
