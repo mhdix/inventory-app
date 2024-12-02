@@ -71,7 +71,7 @@ const Product = ({ categories, products, setProducts }) => {
                 <option value="" className="bg-slate-500 text-slate-300">
                   select a category
                 </option>
-                {categories.map((category) => (
+                {categories != [] && categories.map((category) => (
                   <option
                     key={category.id}
                     className="bg-slate-500 text-slate-300"
